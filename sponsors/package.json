@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "sponsor": "sponsorkit",
+    "sponsor:org": "ORGANIZATION_SPONSORS=1 sponsorkit"
+  },
+  "devDependencies": {
+    "sponsorkit": "^0.8.9"
+  }
+}
