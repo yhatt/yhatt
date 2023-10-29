@@ -6,7 +6,8 @@
 
 I'm senior frontend developer, weekend OSS maintainer, and the author of [**Marp**, Markdown Presentation Ecosystem](https://marp.app).
 
-## [Sponsors](https://github.com/sponsors/yhatt)
+<details>
+<summary>Sponsors</summary>
 
 ### Organization sponsors
 
@@ -15,3 +16,5 @@ I'm senior frontend developer, weekend OSS maintainer, and the author of [**Marp
 ### Personal sponsors
 
 ![Personal sponsors](https://yhatt.github.io/yhatt/sponsors.svg)
+
+</details>
