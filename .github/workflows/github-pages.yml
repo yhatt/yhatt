@@ -1,0 +1,56 @@
+name: GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          cache: npm
+          node-version-file: '.nvmrc'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build sponsors images
+        env:
+          GITHUB_PAT: ${{ secrets.SPONSORS_GITHUB_PAT }}
+        run: |
+          npm run -w sponsors sponsor
+          npm run -w sponsors sponsor:org
+
+          mkdir -p dist
+          cp sponsors/sponsorkit/personal.svg dist/sponsors.svg
+          cp sponsors/sponsorkit/organization.svg dist/sponsors-org.svg
+
+      - name: Upload page artifacts
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
