@@ -39,8 +39,8 @@ jobs:
         env:
           GITHUB_PAT: ${{ secrets.SPONSORS_GITHUB_PAT }}
         run: |
-          npm run -w sponsors sponsor
-          npm run -w sponsors sponsor:org
+          npm run -w sponsors sponsors
+          npm run -w sponsors sponsors:org
 
           mkdir -p dist
           cp sponsors/sponsorkit/personal.svg dist/sponsors.svg
