@@ -1,8 +1,4 @@
 {
-  "scripts": {
-    "sponsor": "npm run sponsor -w sponsors",
-    "sponsor:org": "npm run sponsor:org -w sponsors"
-  },
   "workspaces": [
     "sponsors"
   ]
