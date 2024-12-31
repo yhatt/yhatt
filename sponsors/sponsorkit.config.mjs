@@ -1,4 +1,4 @@
-import { defineConfig, presets } from 'sponsorkit'
+import { defineConfig, tierPresets } from 'sponsorkit'
 
 const MODE = process.env.ORGANIZATION_SPONSORS ? 'organization' : 'personal'
 
@@ -24,18 +24,18 @@ export default defineConfig({
   formats: ['json', 'svg'],
   tiers: [
     {
-      preset: presets.none,
+      preset: tierPresets.none,
     },
     {
       // title: 'Mid-tier Sponsors',
       monthlyDollars: 5,
-      preset: { ...presets.medium, name: undefined },
+      preset: { ...tierPresets.medium, name: undefined },
       composeBefore: sponsorsSorter,
     },
     {
       // title: 'Top-tier Sponsors',
       monthlyDollars: 10,
-      preset: presets.xl,
+      preset: tierPresets.xl,
       composeBefore: sponsorsSorter,
     },
   ],
