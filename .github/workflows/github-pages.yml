@@ -24,10 +24,10 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Install Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           cache: npm
           node-version-file: '.nvmrc'
@@ -47,7 +47,7 @@ jobs:
           cp sponsors/sponsorkit/organization.svg dist/sponsors-org.svg
 
       - name: Upload page artifacts
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: dist
 
